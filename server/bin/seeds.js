@@ -14,7 +14,7 @@ const userData = {
 const recipeData = [
   {
     name: "Lasagnes 🍅🥕",
-    imgPath: "/static/images/lasagna.jpg",
+    image: "/static/images/lasagna.jpg",
     ingredients: [
       "1/2 paquet de pâte à lasagne",
       "250g de viande de boeuf hâchée",
@@ -44,7 +44,7 @@ const recipeData = [
   },
   {
     name: "Ratatouille 🍅🍆",
-    imgPath: "/static/images/ratatouille.jpg",
+    image: "/static/images/ratatouille.jpg",
     ingredients: [
       "3 aubergines",
       "6 oignons",
@@ -60,8 +60,82 @@ const recipeData = [
       "Verser le tout dans un wok/marmite chaude avec une bonne quantité d'huile d'olive, poivre et sel",
       "Laisser mijoter à feu doux le plus longtemps possible, au moins une heure (plus c'est long, plus c'est bon!)"
     ],
-    duration: "1h ++",
+    duration: "1h",
     tags: ["Facile", "Végétarien"]
+    // user: "Ombline"
+  },
+  {
+    name: "Oeuf cocotte 🐣",
+    image: "/static/images/oeufs-cocotte.jpg",
+    ingredients: [
+      "1 oeuf",
+      "Crème fraîche",
+      "Ciboulette",
+      "Beurre",
+      "Tomates séchées",
+      "Fromage rapé",
+      "Sel",
+      "Poivre"
+    ],
+    instructions: [
+      "Préchauffer le four à 220°C",
+      "Verser deux cuillères de crème fraîche dans un ramequin",
+      "Casser l'oeuf et le recouvrir d'une cuillère de crème fraîche",
+      "Rajouter les tomates séchées coupées en dés, le gruyère, poivre sel et ciboulette",
+      "Mettre au four pour 15 minutes"
+    ],
+    duration: "20 min",
+    tags: ["Facile", "Rapide"]
+    // user: "Ombline"
+  },
+  {
+    name: "Quiche lorraine 🍕🥓",
+    image: "/static/images/quiche-lorraine.jpg",
+    ingredients: [
+      "Pâte brisée",
+      "200g de lardons",
+      "30g de beurre",
+      "3 oeufs",
+      "20 cl de crême fraîche",
+      "20 cl de lait",
+      "Sel",
+      "Poivre",
+      "Muscade"
+    ],
+    instructions: [
+      "Préchauffer le four à 180°C",
+      "Etaler la pâte dans un moule,la piquer à la fourchette et parsemer de copeaux de beurre",
+      "Faire rissoler les lardons à la poêle",
+      "Battre les oeufs, la crème fraîche et le lait",
+      "Ajouter les lardons et assaisoner de sel, poivre et muscade",
+      "Verser sur la pâte",
+      "Cuire 45 à 50 min"
+    ],
+    duration: "1h",
+    tags: ["Facile"]
+    // user: "Ombline"
+  },
+  {
+    name: "Galette de blé noir",
+    image: "/static/images/galette.jpg",
+    ingredients: [
+      "Galette de blé noir",
+      "Jambon cru",
+      "Beurre",
+      "Fromage rapé",
+      "1 oeuf",
+      "Sel",
+      "Poivre"
+    ],
+    instructions: [
+      "Faire fondre une noisette de beurre dans une grande poêle",
+      "Faire cuire le côté intérieur de la galette",
+      "Retourner la galette et faire un puit avec le fromage et le jambon, puis casser l'oeuf à l'intérieur",
+      "Assaisonner puis refermer la crêpe",
+      "Cuire 10 minutes"
+    ],
+    duration: "15 min",
+    tags: ["Facile", "Rapide"]
     // user: "Ombline"
   }
 ];

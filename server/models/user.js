@@ -9,7 +9,7 @@ const userSchema = new Schema({
     enum: ["Admin", "Member"],
     default: "Member"
   },
-  bookmarks: [
+  likes: [
     {
       type: Schema.Types.ObjectId,
       ref: "Recipe"

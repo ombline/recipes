@@ -13,7 +13,7 @@ const { Strategy, ExtractJwt } = require("passport-jwt");
 const history = require("express-history-api-fallback");
 require("dotenv").config();
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
-
+//
 const app = express();
 
 // uncomment after placing your favicon in /public
@@ -60,6 +60,7 @@ passport.use(strategy);
 
 const authRoutes = require("./routes/auth");
 const recipesController = require("./routes/recipesController");
+const authenticate = passport.authenticate("jwt", config.jwtSession);
 app.use("/api", authRoutes);
 app.use("/api/recipes", recipesController);
 // This is an example of protected route

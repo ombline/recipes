@@ -1,19 +1,32 @@
+
+
 <template>
   <div>
     <form @submit.prevent="signup">
-      <b-field label="Username">
-        <b-input v-model="username" placeholder="Username" required></b-input>
-      </b-field>
-
-      <b-field label="Email">
-        <b-input v-model="email" type="email" placeholder="Email" required>
-        </b-input>
-      </b-field>
-
-      <b-field label="Password">
-        <b-input v-model="password" placeholder="Password" type="password" required password-reveal>
-        </b-input>
-      </b-field>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input v-model="username" class="input" type="username" placeholder="Nom">
+          <span class="icon is-small is-left">
+            <i class="fa fa-smile-o "></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input v-model="email" class="input" type="email" placeholder="Email">
+          <span class="icon is-small is-left">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input v-model="password" class="input" type="password" placeholder="Mot de passe">
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+            </p>
+          </div>
 
       <button class="button is-info">Signup</button>
     </form>
@@ -54,9 +67,16 @@ export default {
 <style scoped>
   button {
     margin-top: 1%;
+    font-size: 20px;
+
   }
   form {
     width: 40%;
+  }
+
+  input {
+    margin-bottom: 2%;
+    font-size: 20px;
   }
 
 </style>

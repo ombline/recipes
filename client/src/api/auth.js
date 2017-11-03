@@ -10,7 +10,7 @@ const auth = axios.create({
 });
 
 function saveUserInfo({ token, user }) {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  auth.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   localStorage.setItem("token", token);
   localStorage.setItem("user", JSON.stringify(user));
 }
@@ -50,7 +50,7 @@ export function logout(vm) {
   vm.user = null;
   delete axios.defaults.headers.common["Authorization"];
 }
-
+//hello
 export function signup(userInfo) {
   return auth.post("/signup", userInfo).then(response => {
     return response.data;
@@ -63,10 +63,32 @@ export function getRecipes() {
     return response.data;
   });
 }
+//hello
 
 export function getOneRecipe(id) {
   let url = "/recipes/" + id;
   return auth.get(url).then(response => {
+    return response.data;
+  });
+}
+
+export function like(rID, uID) {
+  let url = "/recipes/" + rID + "/like";
+  return auth.post(url, { uID }).then(response => {
+    return response;
+  });
+}
+
+export function addRecipe(info) {
+  let url = "/recipes/new";
+  return auth.post(url, info).then(response => {
+    return response;
+  });
+}
+
+export function seeFavs(userID) {
+  let url = "/recipes/test/favs";
+  return auth.get(url, userID).then(response => {
     return response.data;
   });
 }

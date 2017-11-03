@@ -4,6 +4,8 @@ import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
 import RecipeCard from "./RecipeCard";
+import CreateNew from "./CreateNew";
+import Favs from "./Favs";
 
 Vue.use(Router);
 
@@ -29,6 +31,14 @@ const router = new Router({
     {
       path: "/recipes/:id",
       component: RecipeCard
+    },
+    {
+      path: "/new",
+      component: CreateNew
+    },
+    {
+      path: "/favs",
+      component: Favs
     }
   ]
 });

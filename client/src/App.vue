@@ -15,13 +15,20 @@
       <div id="navMenuTransparentExample" class="navbar-menu">
         <div class="navbar-end">
           <router-link v-if="!$root.user" to="/login" class="navbar-item ">
-            Login
+            👤 Login
           </router-link>
           <router-link v-if="!$root.user" to="/signup" class="navbar-item ">
-            Signup
+            📜 Signup
+          </router-link>
+
+          <router-link class="navbar-item"  v-if="$root.user" to="/new">
+            Ajouter une recette 🖊️
+          </router-link>
+          <router-link class="navbar-item"  v-if="$root.user" to="/favs">
+            Mes favoris ❤️
           </router-link>
           <a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
-            Logout
+            Logout ❎
           </a>
         </div>
       </div>
@@ -36,7 +43,7 @@
 </template>
 
 <script>
-import { logout } from "@/api/auth";
+import { logout, addRecipe, seeFavs } from "@/api/auth";
 export default {
   name: "app",
   methods: {
@@ -49,6 +56,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+  nav {
+    background-color: #f9c639;
+  }
+
   span {
     font-size: 50px;
   }
