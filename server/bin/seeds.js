@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 const User = require("../models/user");
 const Recipe = require("../models/recipe");
@@ -140,10 +139,10 @@ const recipeData = [
   }
 ];
 
-Recipe.create(recipeData, (err, recipes) => {
-  if (err) {
-    throw err;
-  }
-  console.log("MONGO: " + recipes.length + " recipes created");
-  mongoose.connection.close();
-});
+mongoose
+  .connect(process.env.MONGODB_URI, { useMongoClient: true })
+  .then(() => Recipe.remove({}))
+  .then(() => Recipe.create(recipeData))
+  .then(recipes => console.log(`Created ${recipes.length} recipes.`))
+  .then(() => mongoose.connection.close())
+  .catch(err => console.error(err));
