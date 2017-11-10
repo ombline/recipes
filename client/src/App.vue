@@ -15,10 +15,13 @@
       <div id="navMenuTransparentExample" class="navbar-menu">
         <div class="navbar-end">
           <router-link v-if="!$root.user" to="/login" class="navbar-item ">
-            👤 Login
+            👤 S'identifier
           </router-link>
           <router-link v-if="!$root.user" to="/signup" class="navbar-item ">
-            📜 Signup
+            📜 Créer un compte
+          </router-link>
+          <router-link class="navbar-item"  v-if="$root.user" to="/myrecipes">
+            Mes recettes 🖊️
           </router-link>
 
           <router-link class="navbar-item"  v-if="$root.user" to="/new">

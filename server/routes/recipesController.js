@@ -92,33 +92,37 @@ router.get("/new", (req, res, next) => {
   });
 });
 
-router.post("/new", (req, res, next) => {
-  console.log("request received");
-  console.log(req.body);
+router.post(
+  "/new",
+  passport.authenticate("jwt", config.jwtSession),
+  (req, res, next) => {
+    console.log("request received");
+    console.log(req.body);
 
-  const infoRecipe = {
-    name: req.body.name,
-    image: req.body.image,
-    ingredients: req.body.ingredients,
-    instructions: req.body.instructions,
-    duration: req.body.duration,
-    tags: req.body.tags,
-    user: req.body.user._id
-  };
+    const infoRecipe = {
+      name: req.body.name,
+      image: req.body.image,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      duration: req.body.duration,
+      tags: req.body.tags,
+      user: req.body.user._id
+    };
 
-  console.log(infoRecipe);
+    console.log(infoRecipe);
 
-  const newRecipe = new Recipe(infoRecipe);
+    const newRecipe = new Recipe(infoRecipe);
 
-  newRecipe
-    .save()
-    .then(response => {
-      res.json(response);
-    })
-    .catch(err => {
-      next(err);
-    });
-});
+    newRecipe
+      .save()
+      .then(response => {
+        res.json(response);
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
+);
 
 router.get(
   "/test/favs",
@@ -135,5 +139,43 @@ router.get(
       });
   }
 );
+
+router.get(
+  "/test/myrecipes",
+  passport.authenticate("jwt", config.jwtSession),
+  (req, res, next) => {
+    Recipe.find({ user: req.user._id }).then(recipes => {
+      res.json(recipes);
+    });
+  }
+);
+
+router.patch(
+  "/test/:id/edit",
+  passport.authenticate("jwt", config.jwtSession),
+  (req, res, next) => {
+    console.log("it arrives here, BODY", req.body);
+    const rID = req.params.id;
+    const info = req.body;
+    Recipe.findByIdAndUpdate(rID, info, { new: true }).then(updatedRecipe => {
+      console.log("ALLLLLEEEEEZZZZZ", updatedRecipe);
+      // if (err) {
+      //   return next(err);
+      // }
+      res.json(updatedRecipe);
+    });
+  }
+);
+
+router.post("/:id/delete", (req, res, next) => {
+  const rId = req.params.id;
+
+  Recipe.findByIdAndRemove(rId, err => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 module.exports = router;

@@ -21,7 +21,7 @@
    </div>
    <div v-else>
      <img :src="image" />
-       <button @click="removeImage" style="width: 30%;" class="button is-warning">Remove image</button>
+       <button @click="removeImage" style="width: 30%;" class="button is-warning">Supprimer l'image</button>
    </div>
 
     <form>
@@ -86,10 +86,10 @@ export default {
     return {
       name: null,
       image: null,
-      ingredients: [null, null, null],
-      instructions: [null, null, null],
+      ingredients: [null],
+      instructions: [null],
       duration: null,
-      tags: [null, null],
+      tags: [null],
       err: null
     };
   },

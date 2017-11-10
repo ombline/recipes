@@ -92,3 +92,28 @@ export function seeFavs(userID) {
     return response.data;
   });
 }
+
+export function getMyRecipes(userID) {
+  let url = "/recipes/test/myrecipes";
+  return auth.get(url, userID).then(response => {
+    return response.data;
+  });
+}
+
+export function editRecipe(info, rID) {
+  console.log("API check", info, rID);
+  let url = "/recipes/test/" + rID + "/edit";
+  console.log("url check", url);
+
+  return auth.patch(url, info).then(response => {
+    console.log("i'm on the way back", response);
+    return response;
+  });
+}
+
+export function deleteRecipe(rID) {
+  let url = "/recipes/" + rID + "/delete";
+  return auth.post(url, rID).then(response => {
+    return response;
+  });
+}

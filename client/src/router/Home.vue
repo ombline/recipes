@@ -7,8 +7,10 @@
         <router-link :to="'/recipes/' + recipe._id">
         <img :src="recipe.image" alt="recipe pic" v-if="recipe.image">
       </router-link>
+      <!-- <p>Ajouté par {{recipe.$root.user.name}}</p> -->
       <div class="likes">
-        <button @click="likeRecipe(recipe._id, $root.user._id, index)" v-bind:class="{ liked: recipe.isLiked }">
+        <button @click="likeRecipe(recipe._id, $root.user._id, index)"
+        v-bind:class="{ liked: recipe.isLiked }">
           {{recipe.likes.length}} ❤️</button>
       </div>
       </div>
